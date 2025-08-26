@@ -1,0 +1,32 @@
+name: Scheduled Job
+
+on:
+  schedule:
+    - cron: "0 * * * *" # every hour (UTC)
+  workflow_dispatch: # allow manual trigger too
+
+jobs:
+  scheduled-job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run scheduler function
+        run: npm run start || echo "API failed, logs created"
+
+      - name: Upload logs if exist
+        uses: actions/upload-artifact@v3
+        with:
+          name: api-failure-logs
+          path: logs/*.log
+          if-no-files-found: ignore
