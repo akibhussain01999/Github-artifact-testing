@@ -2,7 +2,7 @@ name: Scheduled Job
 
 on:
   schedule:
-     - cron: "*/2 * * * *"  # runs every 5 minutes
+    - cron: "*/2 * * * *"  # runs every 2 minutes
   workflow_dispatch: # allow manual trigger too
 
 jobs:
@@ -11,10 +11,10 @@ jobs:
 
     steps:
       - name: Checkout repo
-        uses: actions/upload-artifact@v4
+        uses: actions/checkout@v4   # ✅ correct action
 
       - name: Setup Node.js
-        uses: actions/upload-artifact@v4
+        uses: actions/setup-node@v4   # ✅ correct action
         with:
           node-version: 18
 

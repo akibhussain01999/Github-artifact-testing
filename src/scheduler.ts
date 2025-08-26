@@ -36,7 +36,7 @@ async function runJob() {
 
     console.log("✅ API success:", res.data);
   } catch (err: any) {
-    console.error("❌ API failed:", err.message);
+    console.error("❌ API failed:", err.message); 
 
     // Write logs
     const logDir = path.join(process.cwd(), "logs");
