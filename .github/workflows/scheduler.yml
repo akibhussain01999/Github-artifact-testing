@@ -25,6 +25,7 @@ jobs:
         run: npm run start || echo "API failed, logs created"
 
       - name: Upload logs if exist
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: api-failure-logs

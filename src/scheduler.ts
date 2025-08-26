@@ -25,18 +25,15 @@
 // runJob();
 
 
-import axios from "axios";
 import fs from "fs";
 import path from "path";
 
-async function runJob() {
+async function runJob() { 
   try {
-    // invalid URL → guaranteed to fail
-    const res = await axios.post("https://this-api-does-not-exist-12345.com/fail");
-
-    console.log("✅ API success:", res.data);
+    // Always throw an error for testing artifact upload
+    throw new Error("Forced error for artifact upload test");
   } catch (err: any) {
-    console.error("❌ API failed:", err.message); 
+    console.error("❌ API failed:", err.message);
 
     // Write logs
     const logDir = path.join(process.cwd(), "logs");
@@ -50,8 +47,8 @@ async function runJob() {
 
     console.log(`📄 Error log created at ${logFile}`);
 
-    // exit 0 so workflow continues and artifact upload runs
-    process.exit(0);
+    // exit 1 so workflow fails and artifact upload runs
+    process.exit(1);
   }
 }
 
