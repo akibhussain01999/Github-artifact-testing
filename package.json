@@ -3,15 +3,14 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-     "start": "ts-node src/scheduler.ts"
+    "start": "ts-node src/scheduler.ts",
+    "build": "tsc"
   },
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "axios": "^1.11.0",
-    "fs": "^0.0.1-security",
-    "path": "^0.12.7"
+    "axios": "^1.11.0"
   },
   "devDependencies": {
     "@types/node": "^24.3.0",

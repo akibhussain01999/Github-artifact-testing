@@ -28,7 +28,7 @@
 import fs from "fs";
 import path from "path";
 
-async function runJob() { 
+async function runJob() {
   try {
     // Always throw an error for testing artifact upload
     throw new Error("Forced error for artifact upload test");
@@ -53,3 +53,5 @@ async function runJob() {
 }
 
 runJob();
+
+export {}; // Ensure this file is treated as a module by TypeScript
